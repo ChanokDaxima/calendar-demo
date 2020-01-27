@@ -50,32 +50,42 @@
 						title: 'Facility 1',
 						startTime: '06:00:00',
 						endTime: '12:00:00',
+						color: '#3788d8'
 					},
 					{
 						daysOfWeek: [ '1' ],
 						title: 'Facility 2',
 						startTime: '12:00:00',
 						endTime: '18:00:00',
-						color: '#93E3C8'
+						color: '#E9A0FF'
 					},
 					{
 						daysOfWeek: [ '3' ],
 						title: 'Facility 1',
 						startTime: '06:00:00',
 						endTime: '12:00:00',
+						color: '#3788d8'
 					},
 					{
 						daysOfWeek: [ '3' ],
 						title: 'Facility 2',
 						startTime: '12:00:00',
 						endTime: '18:00:00',
-						color: '#93E3C8'
+						color: '#E9A0FF'
 					},
 					{
 						daysOfWeek: [ '4' ],
 						title: 'Facility 1',
 						startTime: '06:00:00',
 						endTime: '12:00:00',
+						color: '#3788d8'
+					},
+					{
+						daysOfWeek: [ '4' ],
+						title: 'Available',
+						startTime: '12:00:00',
+						endTime: '18:00:00',
+						color: '#D3D3D3'
 					},
 				],
 				dateClick: function () {
@@ -93,12 +103,13 @@
 <body>
 	<div class="container pt-5">
 		<div class="row mb-3">
-			<div class="col-6"><h3>Doctor Scheduled Time</h3></div>
+			<div class="col-6"><h3>Doctor Schedule</h3></div>
 			<div class="col-6 text-right"><h3>Dr.John Smith</h3></div>
 		</div>
 		<p>
-			<span><span class="badge" style="background-color: #3788d8;">&nbsp;&nbsp;</span> Facility 1</span>
-			<span><span class="badge ml-3" style="background-color: #93E3C8;">&nbsp;&nbsp;</span> Facility 2</span>
+			<span><span class="badge" style="background-color: #D3D3D3;">&nbsp;&nbsp;</span> Available</span>
+			<span><span class="badge ml-3" style="background-color: #3788d8;">&nbsp;&nbsp;</span> Facility 1</span>
+			<span><span class="badge ml-3" style="background-color: #E9A0FF;">&nbsp;&nbsp;</span> Facility 2</span>
 		</p>
 		<div id='calendar'></div>
 	</div>
