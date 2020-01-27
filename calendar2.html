@@ -40,61 +40,47 @@
 
 			var calendar = new FullCalendar.Calendar(calendarEl, {
 				schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
-				plugins: ['resourceTimeline'],
-				defaultView: 'resourceTimelineDay',
+				plugins: ['dayGrid'],
+				defaultView: 'dayGridMonth',
+				showNonCurrentDates: true,
 				defaultDate: '2020-01-24',
-				resourceGroupField: 'facilityName',
-				resourceAreaWidth: '200px',
-				slotWidth: 30,
-				resources: [
-					{
-						id: 1, facilityName: 'Facility 1', title: 'Provider 1',
-						businessHours: [{ daysOfWeek: [1, 2, 3, 4, 5], startTime: '06:00', endTime: '18:00' }]
-					},
-					{
-						id: 2, facilityName: 'Facility 1', title: 'Provider 2',
-						businessHours: [{ daysOfWeek: [1, 2, 3, 4, 5], startTime: '06:00', endTime: '18:00' }]
-					},
-					{
-						id: 3, facilityName: 'Facility 1', title: 'Provider 3',
-						businessHours: [{ daysOfWeek: [1, 2, 3, 4, 5], startTime: '06:00', endTime: '18:00' }]
-					},
-					{
-						id: 4, facilityName: 'Facility 2', title: 'Provider 1',
-						businessHours: [{ daysOfWeek: [1, 2, 3, 4, 5], startTime: '06:00', endTime: '18:00' }]
-					},
-					{
-						id: 5, facilityName: 'Facility 2', title: 'Provider 2',
-						businessHours: [{ daysOfWeek: [1, 2, 3, 4, 5], startTime: '06:00', endTime: '18:00' }]
-					},
-					{
-						id: 6, facilityName: 'Facility 2', title: 'Provider 3',
-						businessHours: [{ daysOfWeek: [1, 2, 3, 4, 5], startTime: '06:00', endTime: '18:00' }]
-					}
-				],
 				events: [
 					{
-						resourceId: 1,
-						id: 'p1',
-						title: '',
-						start: '2020-01-24 06:00:00',
-						end: '2020-01-24 12:00:00',
+						daysOfWeek: [ '1' ],
+						title: 'Facility 1',
+						startTime: '06:00:00',
+						endTime: '12:00:00',
 					},
 					{
-						resourceId: 2,
-						id: 'p2',
-						title: '',
-						start: '2020-01-24 12:00:00',
-						end: '2020-01-24 18:00:00',
+						daysOfWeek: [ '1' ],
+						title: 'Facility 2',
+						startTime: '12:00:00',
+						endTime: '18:00:00',
+						color: '#93E3C8'
 					},
 					{
-						resourceId: 6,
-						id: 'p2',
-						title: '',
-						start: '2020-01-24 06:00:00',
-						end: '2020-01-24 12:00:00',
-					}
-				]
+						daysOfWeek: [ '3' ],
+						title: 'Facility 1',
+						startTime: '06:00:00',
+						endTime: '12:00:00',
+					},
+					{
+						daysOfWeek: [ '3' ],
+						title: 'Facility 2',
+						startTime: '12:00:00',
+						endTime: '18:00:00',
+						color: '#93E3C8'
+					},
+					{
+						daysOfWeek: [ '4' ],
+						title: 'Facility 1',
+						startTime: '06:00:00',
+						endTime: '12:00:00',
+					},
+				],
+				dateClick: function () {
+					alert('a day has been clicked!');
+				}
 			});
 
 			calendar.render();
@@ -106,7 +92,14 @@
 
 <body>
 	<div class="container pt-5">
-		<h3 class="mb-3">All Facility View</h3 class="mb-3">
+		<div class="row mb-3">
+			<div class="col-6"><h3>Doctor Scheduled Time</h3></div>
+			<div class="col-6 text-right"><h3>Dr.John Smith</h3></div>
+		</div>
+		<p>
+			<span><span class="badge" style="background-color: #3788d8;">&nbsp;&nbsp;</span> Facility 1</span>
+			<span><span class="badge ml-3" style="background-color: #93E3C8;">&nbsp;&nbsp;</span> Facility 2</span>
+		</p>
 		<div id='calendar'></div>
 	</div>
 </body>

@@ -40,60 +40,32 @@
 
 			var calendar = new FullCalendar.Calendar(calendarEl, {
 				schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
-				plugins: ['resourceTimeline'],
-				defaultView: 'resourceTimelineDay',
+				plugins: ['dayGrid'],
+				defaultView: 'dayGridMonth',
+				showNonCurrentDates: true,
 				defaultDate: '2020-01-24',
-				resourceGroupField: 'facilityName',
-				resourceAreaWidth: '200px',
-				slotWidth: 30,
-				resources: [
-					{
-						id: 1, facilityName: 'Facility 1', title: 'Provider 1',
-						businessHours: [{ daysOfWeek: [1, 2, 3, 4, 5], startTime: '06:00', endTime: '18:00' }]
-					},
-					{
-						id: 2, facilityName: 'Facility 1', title: 'Provider 2',
-						businessHours: [{ daysOfWeek: [1, 2, 3, 4, 5], startTime: '06:00', endTime: '18:00' }]
-					},
-					{
-						id: 3, facilityName: 'Facility 1', title: 'Provider 3',
-						businessHours: [{ daysOfWeek: [1, 2, 3, 4, 5], startTime: '06:00', endTime: '18:00' }]
-					},
-					{
-						id: 4, facilityName: 'Facility 2', title: 'Provider 1',
-						businessHours: [{ daysOfWeek: [1, 2, 3, 4, 5], startTime: '06:00', endTime: '18:00' }]
-					},
-					{
-						id: 5, facilityName: 'Facility 2', title: 'Provider 2',
-						businessHours: [{ daysOfWeek: [1, 2, 3, 4, 5], startTime: '06:00', endTime: '18:00' }]
-					},
-					{
-						id: 6, facilityName: 'Facility 2', title: 'Provider 3',
-						businessHours: [{ daysOfWeek: [1, 2, 3, 4, 5], startTime: '06:00', endTime: '18:00' }]
-					}
-				],
 				events: [
 					{
-						resourceId: 1,
-						id: 'p1',
-						title: '',
-						start: '2020-01-24 06:00:00',
-						end: '2020-01-24 12:00:00',
+						daysOfWeek: [ '1' ],
+						title: 'Available',
+						startTime: '06:00:00',
+						endTime: '18:00:00',
+						color: '#D3D3D3',
 					},
 					{
-						resourceId: 2,
-						id: 'p2',
-						title: '',
-						start: '2020-01-24 12:00:00',
-						end: '2020-01-24 18:00:00',
+						daysOfWeek: [ '3' ],
+						title: 'Available',
+						startTime: '06:00:00',
+						endTime: '18:00:00',
+						color: '#D3D3D3'
 					},
 					{
-						resourceId: 6,
-						id: 'p2',
-						title: '',
-						start: '2020-01-24 06:00:00',
-						end: '2020-01-24 12:00:00',
-					}
+						daysOfWeek: [ '4' ],
+						title: 'Available',
+						startTime: '06:00:00',
+						endTime: '18:00:00',
+						color: '#D3D3D3'
+					},
 				]
 			});
 
@@ -106,7 +78,10 @@
 
 <body>
 	<div class="container pt-5">
-		<h3 class="mb-3">All Facility View</h3 class="mb-3">
+		<div class="row mb-3">
+			<div class="col-6"><h3>Doctor Available Time</h3></div>
+			<div class="col-6 text-right"><h3>Dr.John Smith</h3></div>
+		</div>
 		<div id='calendar'></div>
 	</div>
 </body>
