@@ -18,6 +18,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+		<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+
 		<style type="text/css">
 			#calendar .fc-bgevent {
     		background: lightslategray;
@@ -28,75 +30,72 @@
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
 
+
+				let businessHr1 = [{ daysOfWeek: [1,2,3,4,5], startTime: '08:00', endTime: '18:00'}];
+				let businessHr2 = [{ daysOfWeek: [1,2,3,4,5], startTime: '08:00', endTime: '17:00'}];
+				let date1 = moment().format('YYYY-MM-DD');
+
         var calendar = new FullCalendar.Calendar(calendarEl, {
 					schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
           plugins: [ 'resourceTimeline'  ],
 					defaultView: 'resourceTimelineDay',
-					resourceGroupField: 'provider',
 					resourceAreaWidth: '200px',
 					slotWidth: 30,
+					//slotDuration: '01:00:00',
 					resources: [
-						{ id: 1, provider: 'Test Provider', title: 'Hospital 1', 
-							businessHours: [{ daysOfWeek: [1,2,3,4,5], startTime: '05:00', endTime: '18:00'}]
+						{
+							id: 1, title: 'City Hospital' ,
+							children: [ {id: '1a', title: 'Dr. Adams', businessHours: businessHr1}, {id: '2a', title: 'Dr. Cole', businessHours: businessHr1}, {id: '3a', title: 'Dr. Morgan', businessHours: businessHr1}],
+							businessHours: businessHr1
 						},
-						{ id: 2, provider: 'Test Provider', title: 'Hospital 2',
-							businessHours: [{ daysOfWeek: [1,2,3,4,5], startTime: '05:00', endTime: '18:00'}]
-						},
-						{ id: 3, provider: 'Test Provider', title: 'Hospital 3',
-							businessHours: [{ daysOfWeek: [1,2,3,4,5], startTime: '05:00', endTime: '20:00'}]
-						},
-						{ id: 4, provider: 'Test Provider 2', title: 'Hospital 1',
-							businessHours: [{ daysOfWeek: [1,2,3,4,5], startTime: '05:00', endTime: '18:00'}]
-						},
-						{ id: 5, provider: 'Test Provider 2', title: 'Hospital 2',
-							businessHours: [{ daysOfWeek: [1,2,3,4,5], startTime: '05:00', endTime: '18:00'}]
-						},
-						{ id: 6, provider: 'Test Provider 2', title: 'Hospital 3',
-							businessHours: [{ daysOfWeek: [1,2,3,4,5], startTime: '05:00', endTime: '20:00'}]
-						},
+						{
+							id: 2, title: 'State Hospital' ,
+							children: [ {id: '1b', title: 'Dr. Adams', businessHours: businessHr2}, {id: '2b', title: 'Dr. Cole', businessHours: businessHr2}, {id: '3b', title: 'Dr. Morgan', businessHours: businessHr2}],
+							businessHours: businessHr2
+						}
 					],
 					events: [
 						{
-							resourceId: 1,
+							resourceId: '1a',
 							id: 'p1',
 							title: '',
-							start: '2020-01-24 09:00:00',
-							end: '2020-01-24 15:00:00',
+							start: date1 + ' 09:00:00',
+							end: date1 + ' 15:00:00',
 						},
 						{
-							resourceId: 2,
+							resourceId: '2a',
 							id: 'p2',
 							title: '',
-							start: '2020-01-24 07:00:00',
-							end: '2020-01-24 09:00:00',
+							start: date1 + ' 08:00:00',
+							end: date1 + ' 09:00:00',
 						},
 						{
-							resourceId: 3,
+							resourceId: '3a',
 							id: 'p2',
 							title: '',
-							start: '2020-01-24 15:00:00',
-							end: '2020-01-24 16:00:00',
+							start: date1 + ' 17:00:00',
+							end: date1 + ' 18:00:00',
 						},
 						{
-							resourceId: 1,
+							resourceId: '1b',
 							id: 'p1',
 							title: '',
-							start: '2020-01-25 09:00:00',
-							end: '2020-01-25 15:00:00',
+							start: date1 + ' 08:00:00',
+							end: date1 + ' 09:00:00',
 						},
 						{
-							resourceId: 2,
+							resourceId: '2b',
 							id: 'p2',
 							title: '',
-							start: '2020-01-25 07:00:00',
-							end: '2020-01-25 09:00:00',
+							start: date1 + ' 09:00:00',
+							end: date1 + ' 13:00:00',
 						},
 						{
-							resourceId: 3,
+							resourceId: '3b',
 							id: 'p2',
 							title: '',
-							start: '2020-01-25 15:00:00',
-							end: '2020-01-25 16:00:00',
+							start: date1 + ' 13:00:00',
+							end: date1 + ' 17:00:00',
 						},
 					],
 
@@ -108,12 +107,17 @@
         calendar.render();
       });
 
+
+			function openFacilityModal(){
+				$('#facilitySchedModal').modal('show');
+			}
     </script>
   </head>
   <body>
 		<div class="container">
 			<div class="row">
 				<h1>Calendar</h1>
+				<button class="btn btn-primary" onClick="openFacilityModal()">Add Facility Availibility</button>
 			</div>
 			<div class="row">
 				<div id='calendar'></div>
@@ -206,7 +210,182 @@
 				</div>
 			</div>
 		</div>
+		<!-- Modal -->
 
+
+		<!-- Modal -->
+		<div class="modal fade" id="facilitySchedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Work Schedule</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group row">
+								<label for="providerName" class="col-sm-3 col-form-label">Facility</label>
+								<div class="col-sm-9">
+									<select id="startTime" name="startTime" class="form-control">
+										<option>City Hospital</option>
+										<option>State Hospital</option>
+									</select>
+								</div>
+							</div>
+
+
+							
+
+							<hr/>
+							
+							<div class="form-group row">
+								<label for="scheduleDate" class="col-sm-3 col-form-label">Date</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="scheduleDate" value="1/24/2019">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="startTime" class="col-sm-3 col-form-label">Start Time</label>
+								<div class="col-sm-9">
+									<select id="startTime" name="startTime" class="form-control">
+										<option>12 am</option>
+										<option>1 am</option>
+										<option>2 am</option>
+										<option>3 am</option>
+										<option>4 am</option>
+										<option>5 am</option>
+										<option>6 am</option>
+										<option>7 am</option>
+										<option>8 am</option>
+										<option>9 am</option>
+										<option>10 am</option>
+										<option>11 am</option>
+										<option>12 pm</option>
+										<option>1 pm</option>
+										<option>2 pm</option>
+										<option>3 pm</option>
+										<option>4 pm</option>
+										<option>5 pm</option>
+										<option>6 pm</option>
+										<option>7 pm</option>
+										<option>8 pm</option>
+										<option>9 pm</option>
+										<option>10 pm</option>
+										<option>11 pm</option>
+										<option>12 pm</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="endTime" class="col-sm-3 col-form-label">End Time</label>
+								<div class="col-sm-9">
+									<select id="endTime" name="endTime" class="form-control">
+										<option>12 am</option>
+										<option>1 am</option>
+										<option>2 am</option>
+										<option>3 am</option>
+										<option>4 am</option>
+										<option>5 am</option>
+										<option>6 am</option>
+										<option>7 am</option>
+										<option>8 am</option>
+										<option>9 am</option>
+										<option>10 am</option>
+										<option>11 am</option>
+										<option>12 pm</option>
+										<option>1 pm</option>
+										<option>2 pm</option>
+										<option>3 pm</option>
+										<option>4 pm</option>
+										<option>5 pm</option>
+										<option>6 pm</option>
+										<option>7 pm</option>
+										<option>8 pm</option>
+										<option>9 pm</option>
+										<option>10 pm</option>
+										<option>11 pm</option>
+										<option>12 pm</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label for="scheduleName" class="col-sm-3 col-form-label">Repeat Event</label>
+								<div class="col-sm-9">
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+										<label class="form-check-label" for="inlineRadio1">Yes</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+										<label class="form-check-label" for="inlineRadio2">No</label>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<label for="scheduleName" class="col-sm-3 col-form-label">Schedule Name</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="scheduleName" value="My Hospital 1 Hours">
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label for="scheduleDate" class="col-sm-3 col-form-label">Repeat Interval</label>
+								<div class="col-sm-9">
+									<select id="repeatInterval" name="repeatInterval" class="form-control">
+										<option>Weekly</option>
+										<option>Daily (Weekday)</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label for="scheduleDate" class="col-sm-3 col-form-label">Repeat Day</label>
+								<div class="col-sm-9">
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+										<label class="form-check-label" for="inlineCheckbox1">Su</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+										<label class="form-check-label" for="inlineCheckbox1">Mo</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+										<label class="form-check-label" for="inlineCheckbox1">Tu</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+										<label class="form-check-label" for="inlineCheckbox1">We</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+										<label class="form-check-label" for="inlineCheckbox1">Th</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+										<label class="form-check-label" for="inlineCheckbox1">Fr</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+										<label class="form-check-label" for="inlineCheckbox1">Sa</label>
+									</div>
+								</div>
+							</div>
+
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal -->
 
   </body>
 </html>
