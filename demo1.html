@@ -97,10 +97,48 @@
 							start: date1 + ' 13:00:00',
 							end: date1 + ' 17:00:00',
 						},
+						// Facility Rows
+						{
+							resourceId: 1,
+							id: 'u1',
+							title: 'Open',
+							start: date1 + ' 15:00',
+							end: date1 + ' 17:00',
+							color: 'lightgrey'
+						},
+						{
+							resourceId: 1,
+							id: 'u1',
+							title: 'Scheduled',
+							start: date1 + ' 08:00',
+							end: date1 + ' 15:00',
+							color: '#FFA693'
+						},
+						{
+							resourceId: 1,
+							id: 'u1',
+							title: 'Scheduled',
+							start: date1 + ' 17:00',
+							end: date1 + ' 18:00',
+							color: '#FFA693'
+						},
+						{
+							resourceId: 2,
+							id: 'u1',
+							title: 'Scheduled',
+							start: date1 + ' 08:00',
+							end: date1 + ' 17:00',
+							color: '#FFA693'
+						}
 					],
 
 					eventClick: function(info) {
-						$('#providerSchedModal').modal('show');
+						if(info.event.title == 'Open') {
+							assignProviderModal();
+						} else {
+							$('#providerSchedModal').modal('show');
+						}
+						
 					}
         });
 
@@ -111,9 +149,31 @@
 			function openFacilityModal(){
 				$('#facilitySchedModal').modal('show');
 			}
+
+			function assignProviderModal() {
+				$('#assignProviderSchedModal').modal('show');
+			}
     </script>
   </head>
   <body>
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">ForeFront</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="demo2.html">Facility</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="demo1.html">Overview</a>
+					</li>
+				</ul>
+			</div>
+		</nav>		
+
 		<div class="container">
 			<div class="row">
 				<h1>Calendar</h1>
@@ -213,7 +273,7 @@
 		<!-- Modal -->
 
 
-		<!-- Modal -->
+		<!-- Facility Modal -->
 		<div class="modal fade" id="facilitySchedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
@@ -385,7 +445,70 @@
 				</div>
 			</div>
 		</div>
-		<!-- Modal -->
+		<!-- Facility Modal -->
+
+<!-- Assign Provider to Facility Modal -->
+<div class="modal fade" id="assignProviderSchedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Assign Provider Schedule</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group row">
+						<label for="facilityName" class="col-sm-3 col-form-label">Facility</label>
+						<div class="col-sm-9">
+							<input type="text" readonly class="form-control-plaintext" id="facilityName" value="City Hospital">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="scheduleDate" class="col-sm-3 col-form-label">Date</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control-plaintext" id="scheduleDate" value="1/24/2019">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="startTime" class="col-sm-3 col-form-label">Start Time</label>
+						<div class="col-sm-9">
+							<select id="startTime" name="startTime" class="form-control">
+								<option>3 pm</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="endTime" class="col-sm-3 col-form-label">End Time</label>
+						<div class="col-sm-9">
+							<select id="endTime" name="endTime" class="form-control">
+								<option>4 pm</option>
+								<option>5 pm</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="providerName" class="col-sm-3 col-form-label">Provider</label>
+						<div class="col-sm-9">
+							<select id="repeatInterval" name="repeatInterval" class="form-control">
+								<option>Dr. Adams</option>
+								<option>Dr. Cole</option>
+							</select>
+						</div>
+					</div>
+					
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Modal -->
 
   </body>
 </html>
