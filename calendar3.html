@@ -33,6 +33,9 @@
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
+		integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+
 	<script>
 
 		document.addEventListener('DOMContentLoaded', function () {
@@ -42,7 +45,7 @@
 				schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
 				plugins: ['dayGrid'],
 				defaultView: 'dayGridMonth',
-				showNonCurrentDates: true,
+				showNonCurrentDates: false,
 				defaultDate: '2020-01-24',
 				events: [
 					{
@@ -50,21 +53,21 @@
 						title: 'Available',
 						startTime: '06:00:00',
 						endTime: '18:00:00',
-						color: '#D3D3D3',
+						color: '#74D855',
 					},
 					{
 						daysOfWeek: ['3'],
 						title: 'Available',
 						startTime: '06:00:00',
 						endTime: '18:00:00',
-						color: '#D3D3D3'
+						color: '#74D855'
 					},
 					{
 						daysOfWeek: ['4'],
 						title: 'Available',
 						startTime: '06:00:00',
 						endTime: '18:00:00',
-						color: '#D3D3D3'
+						color: '#74D855'
 					},
 					{
 						id: 100,
@@ -78,12 +81,28 @@
 					// for (var key in info.event) {
 					// 	console.log('key=' + key);
 					// }
-					//console.log('info=' + info.event.title);
+					console.log('info=' + info.event.start);
 
 					if (info.event.title == 'Unavailable') {
-						$('#vacationModal').modal('show');	
+						$('#vacationModal').modal('show');
 					} else {
 						$('#appointmentModal').modal('show');
+					}
+				},
+				eventRender: function (info) {
+					console.log('[eventRender] ' + info.event.title);
+
+					if (info.event.title == 'Available') {
+						var txt_start = info.event.start.toString();
+						if (txt_start.startsWith('Wed Jan 15 2020')
+						 || txt_start.startsWith('Thu Jan 16 2020')
+						 || txt_start.startsWith('Fri Jan 17 2020')
+						 || txt_start.startsWith('Sat Jan 18 2020')
+						 || txt_start.startsWith('Sun Jan 19 2020')
+						 || txt_start.startsWith('Mon Jan 20 2020')
+						 || txt_start.startsWith('Tue Jan 21 2020')) {
+							return false;
+						}
 					}
 				}
 			});
@@ -132,7 +151,8 @@
 			</div>
 		</div>
 		<div class="text-right mb-2">
-			<button class="btn btn-primary" onclick="addAppointment()">Add</button>
+			<span><a href="calendar2.html" class="mr-3">Check Schedule</a></span>
+			<button class="btn btn-primary" onclick="addAppointment()">Add Availability</button>
 		</div>
 		<div id='calendar'></div>
 	</div>
@@ -164,7 +184,7 @@
 						</div>
 
 						<div class="form-group row">
-							<label for="scheduleDate" class="col-sm-3 col-form-label">Interval</label>
+							<label class="col-sm-3 col-form-label">Interval</label>
 							<div class="col-sm-9">
 								<select id="repeatInterval" name="repeatInterval" class="form-control">
 									<option>Weekly</option>
@@ -174,7 +194,7 @@
 						</div>
 
 						<div class="form-group row">
-							<label for="scheduleDate" class="col-sm-3 col-form-label">Day of Week</label>
+							<label class="col-sm-3 col-form-label">Day of Week</label>
 							<div class="col-sm-9 pt-2">
 								<span class="mr-2"><input type="checkbox" /> S</span>
 								<span class="mr-2"><input type="checkbox" /> M</span>
@@ -187,15 +207,15 @@
 						</div>
 
 						<div class="form-group row">
-							<label for="scheduleDate" class="col-sm-3 col-form-label">Series Start</label>
+							<label class="col-sm-3 col-form-label">Series Start</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="scheduleDate" value="1/1/2020">
+								<input type="text" class="form-control" value="1/1/2020">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="scheduleDate" class="col-sm-3 col-form-label">Series End</label>
+							<label class="col-sm-3 col-form-label">Series End</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="scheduleDate" value="12/31/2020">
+								<input type="text" class="form-control" value="12/31/2020">
 							</div>
 						</div>
 
@@ -239,17 +259,17 @@
 				</div>
 				<div class="modal-body">
 					<form>
-						
+
 						<div class="form-group row">
-							<label for="scheduleDate" class="col-sm-3 col-form-label">From Date</label>
+							<label class="col-sm-3 col-form-label">From Date</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="scheduleDate" value="1/1/2020">
+								<input type="text" class="form-control" value="1/1/2020">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="scheduleDate" class="col-sm-3 col-form-label">To Date</label>
+							<label class="col-sm-3 col-form-label">To Date</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="scheduleDate" value="12/31/2020">
+								<input type="text" class="form-control" value="12/31/2020">
 							</div>
 						</div>
 
