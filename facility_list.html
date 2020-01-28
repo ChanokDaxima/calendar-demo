@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+
+		<link href='https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.3.1/main.css' rel='stylesheet' />
+		<link href='https://cdn.jsdelivr.net/npm/@fullcalendar/timeline@4.3.0/main.css' rel='stylesheet' />
+		<link href='https://cdn.jsdelivr.net/npm/@fullcalendar/resource-timeline@4.3.0/main.css' rel='stylesheet' />
+		
+		<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.3.1/main.js'></script>
+		<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/timeline@4.3.0/main.js'></script>
+		<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/resource-common@4.3.1/main.js'></script>
+		<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/resource-timeline@4.3.0/main.js'></script>
+
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+
+		<style type="text/css">
+			#calendar .fc-bgevent {
+    		background: lightslategray;
+			}
+		</style>
+		<script>
+
+      
+    </script>
+  </head>
+  <body>
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">ForeFront</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="facility_list.html">Facility</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="provider_list.html">Provider</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="summary1.html">Overview</a>
+					</li>
+				</ul>
+			</div>
+		</nav>		
+
+		<div class="container">
+			<div class="row">
+				<h1>Facility List</h1>
+			</div>
+			<div class="row">
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Facility Name" aria-label="Facility Name" aria-describedby="button-addon2">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Facility Name</th>
+							<th scope="col">Active</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td><a href="calendar5.html">City Hospital</a></td>
+							<td>Yes</td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td><a href="calendar5.html">State Hospital</a></td>
+							<td>Yes</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+		</div>
+
+  </body>
+</html>
