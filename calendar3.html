@@ -114,6 +114,10 @@
 			$('#appointmentModal').modal('show');
 		}
 
+		function addVacation() {
+			$('#vacationModal').modal('show');
+		}
+
 	</script>
 
 </head>
@@ -153,6 +157,7 @@
 		<div class="text-right mb-2">
 			<span><a href="calendar2.html" class="mr-3">Check Schedule</a></span>
 			<button class="btn btn-primary" onclick="addAppointment()">Add Availability</button>
+			<button class="btn btn-primary" onclick="addVacation()">Add Unavailable Time</button>
 		</div>
 		<div id='calendar'></div>
 	</div>
