@@ -45,65 +45,152 @@
 				showNonCurrentDates: false,
 				defaultDate: '2020-01-24',
 				events: [
-					{
-						daysOfWeek: [ '1' ],
-						title: 'Open',
-						startTime: '06:00:00',
-						endTime: '18:00:00',
-						color: '#D3D3D3',
-					},
-					{
-						daysOfWeek: [ '2' ],
-						title: 'Open',
-						startTime: '06:00:00',
-						endTime: '18:00:00',
-						color: '#D3D3D3',
-					},
-					{
-						daysOfWeek: [ '3' ],
-						title: 'Open',
-						startTime: '06:00:00',
-						endTime: '18:00:00',
-						color: '#D3D3D3'
-					},
-					{
-						daysOfWeek: [ '4' ],
-						title: 'Open',
-						startTime: '06:00:00',
-						endTime: '18:00:00',
-						color: '#D3D3D3'
-					},
-					{
-						daysOfWeek: [ '5' ],
-						title: 'Open',
-						startTime: '06:00:00',
-						endTime: '18:00:00',
-						color: '#D3D3D3',
-					},
-					{
-						title: 'Scheduled',
-						start: '2020-01-01 06:00:00',
-						end: '2020-01-01 12:00:00',
-						color: '#3788d8',
-					},
-				]
+					{ title: 'John Smith', start: '2020-01-01 06:00:00', end: '2020-01-01 12:00:00', color: '#3788d8' },
+					{ title: 'Peter Cole', start: '2020-01-01 12:00:00', end: '2020-01-01 18:00:00', color: '#3788d8' },
+					{ title: 'John Smith', start: '2020-01-02 06:00:00', end: '2020-01-01 12:00:00', color: '#3788d8' },
+					{ title: 'Peter Cole', start: '2020-01-02 12:00:00', end: '2020-01-01 18:00:00', color: '#3788d8' },
+					{ title: 'Frank Adams', start: '2020-01-03 06:00:00', end: '2020-01-01 12:00:00', color: '#3788d8' },
+					{ title: 'Henry Morgan', start: '2020-01-03 12:00:00', end: '2020-01-01 18:00:00', color: '#3788d8' },
+					{ title: 'John Smith', start: '2020-01-06 06:00:00', end: '2020-01-01 12:00:00', color: '#3788d8' },
+					{ title: 'Peter Cole', start: '2020-01-06 12:00:00', end: '2020-01-01 18:00:00', color: '#3788d8' },
+					{ title: 'Dan Witten', start: '2020-01-07 06:00:00', end: '2020-01-01 12:00:00', color: '#3788d8' },
+					{ title: 'Henry Morgan', start: '2020-01-07 12:00:00', end: '2020-01-01 18:00:00', color: '#3788d8' },
+					{ title: 'John Smith', start: '2020-01-08 06:00:00', end: '2020-01-01 12:00:00', color: '#3788d8' },
+					{ title: 'Peter Cole', start: '2020-01-08 12:00:00', end: '2020-01-01 18:00:00', color: '#3788d8' },
+				],
+				eventClick: function (info) {
+					$('#appointmentModal').modal('show');
+				}
 			});
 
 			calendar.render();
 		});
+
+		function addAppointment() {
+			$('#appointmentModal').modal('show');
+		}
 
 	</script>
 
 </head>
 
 <body>
-	<div class="container pt-5">
-		<div class="row mb-3">
-			<div class="col-6"><h3>Facility Schedule</h3></div>
-			<div class="col-6 text-right"><h3>Moraga Special Care Center</h3></div>
+
+	<div class="container pt-3">
+		<div class="row mb-1">
+			<div class="col-6">
+				<h3>Facility Schedule</h3>
+			</div>
+			<div class="col-6 text-right">
+				<h3>City Hospital</h3>
+			</div>
+		</div>
+		<div class="text-right mb-2">
+			<button class="btn btn-primary" onclick="addAppointment()">Add</button>
 		</div>
 		<div id='calendar'></div>
 	</div>
+
+	<div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Work Schedule</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group row">
+							<label for="scheduleName" class="col-sm-3 col-form-label">Repeat Event</label>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"
+									checked>
+								<label class="form-check-label" for="inlineRadio1">Yes</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+									value="option2">
+								<label class="form-check-label" for="inlineRadio2">No</label>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="scheduleDate" class="col-sm-3 col-form-label">Interval</label>
+							<div class="col-sm-9">
+								<select id="repeatInterval" name="repeatInterval" class="form-control">
+									<option>Weekly</option>
+									<option>Daily (Weekday)</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="scheduleDate" class="col-sm-3 col-form-label">Day of Week</label>
+							<div class="col-sm-9 pt-2">
+								<span class="mr-2"><input type="checkbox" /> S</span>
+								<span class="mr-2"><input type="checkbox" /> M</span>
+								<span class="mr-2"><input type="checkbox" /> T</span>
+								<span class="mr-2"><input type="checkbox" /> W</span>
+								<span class="mr-2"><input type="checkbox" /> T</span>
+								<span class="mr-2"><input type="checkbox" /> F</span>
+								<span class="mr-2"><input type="checkbox" /> S</span>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="scheduleDate" class="col-sm-3 col-form-label">Series Start</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="scheduleDate" value="1/1/2020">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="scheduleDate" class="col-sm-3 col-form-label">Series End</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="scheduleDate" value="12/31/2020">
+							</div>
+						</div>
+
+						<hr />
+
+						<div class="form-group row">
+							<label for="facilityName" class="col-sm-3 col-form-label">Provider</label>
+							<div class="col-sm-9">
+								<select class="form-control">
+									<option>John Smith</option>
+									<option>Peter Cole</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="startTime" class="col-sm-3 col-form-label">Start Time</label>
+							<div class="col-sm-9">
+								<select id="startTime" name="startTime" class="form-control">
+									<option>6 am</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="endTime" class="col-sm-3 col-form-label">End Time</label>
+							<div class="col-sm-9">
+								<select id="endTime" name="endTime" class="form-control">
+									<option>12 pm</option>
+								</select>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 
 </html>

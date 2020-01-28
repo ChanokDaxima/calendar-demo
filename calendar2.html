@@ -3,7 +3,7 @@
 <head>
 	<meta charset='utf-8' />
 	<title>DEMO</title>
-
+	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -32,7 +32,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
-
+	
 	<script>
 
 		document.addEventListener('DOMContentLoaded', function () {
@@ -42,74 +42,185 @@
 				schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
 				plugins: ['dayGrid'],
 				defaultView: 'dayGridMonth',
-				showNonCurrentDates: true,
+				showNonCurrentDates: false,
 				defaultDate: '2020-01-24',
 				events: [
 					{
-						daysOfWeek: [ '1' ],
-						title: 'Facility 1',
+						daysOfWeek: ['1'],
+						title: 'City Hospital',
 						startTime: '06:00:00',
 						endTime: '12:00:00',
 						color: '#3788d8'
 					},
 					{
-						daysOfWeek: [ '1' ],
-						title: 'Facility 2',
+						daysOfWeek: ['1'],
+						title: 'State Hospital',
 						startTime: '12:00:00',
 						endTime: '18:00:00',
 						color: '#E9A0FF'
 					},
 					{
-						daysOfWeek: [ '3' ],
-						title: 'Facility 1',
+						daysOfWeek: ['3'],
+						title: 'City Hospital',
 						startTime: '06:00:00',
 						endTime: '12:00:00',
 						color: '#3788d8'
 					},
 					{
-						daysOfWeek: [ '3' ],
-						title: 'Facility 2',
+						daysOfWeek: ['3'],
+						title: 'State Hospital',
 						startTime: '12:00:00',
 						endTime: '18:00:00',
 						color: '#E9A0FF'
 					},
 					{
-						daysOfWeek: [ '4' ],
-						title: 'Facility 1',
+						daysOfWeek: ['4'],
+						title: 'City Hospital',
 						startTime: '06:00:00',
 						endTime: '12:00:00',
 						color: '#3788d8'
 					},
-					{
-						daysOfWeek: [ '4' ],
-						title: 'Available',
-						startTime: '12:00:00',
-						endTime: '18:00:00',
-						color: '#D3D3D3'
-					},
-				]
+				],
+				eventClick: function (info) {
+					$('#appointmentModal').modal('show');
+				}
 			});
 
 			calendar.render();
 		});
+
+		function addAppointment() {
+			$('#appointmentModal').modal('show');
+		}
 
 	</script>
 
 </head>
 
 <body>
-	<div class="container pt-5">
-		<div class="row mb-3">
-			<div class="col-6"><h3>Doctor Schedule</h3></div>
-			<div class="col-6 text-right"><h3>Dr.John Smith</h3></div>
+	<div class="container pt-3">
+		<div class="row mb-1">
+			<div class="col-6">
+				<h3>Doctor Schedule</h3>
+			</div>
+			<div class="col-6 text-right">
+				<h3>Dr.John Smith</h3>
+			</div>
 		</div>
-		<p>
-			<span><span class="badge" style="background-color: #D3D3D3;">&nbsp;&nbsp;</span> Available</span>
-			<span><span class="badge ml-3" style="background-color: #3788d8;">&nbsp;&nbsp;</span> Facility 1</span>
-			<span><span class="badge ml-3" style="background-color: #E9A0FF;">&nbsp;&nbsp;</span> Facility 2</span>
-		</p>
+		<div class="row mb-2">
+			<div class="col-6 pt-2">
+				<span class="mr-3"><span class="badge" style="background-color: #3788d8;">&nbsp;&nbsp;</span> City
+					Hospital</span>
+				<span class="mr-3"><span class="badge" style="background-color: #E9A0FF;">&nbsp;&nbsp;</span> State
+					Hospital</span class="mr-3">
+			</div>
+			<div class="col-6 text-right">
+				<button class="btn btn-primary" onclick="addAppointment()">Add</button>
+			</div>
+		</div>
 		<div id='calendar'></div>
 	</div>
+
+	<div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Work Schedule</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group row">
+							<label for="scheduleName" class="col-sm-3 col-form-label">Repeat Event</label>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"
+									checked>
+								<label class="form-check-label" for="inlineRadio1">Yes</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+									value="option2">
+								<label class="form-check-label" for="inlineRadio2">No</label>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="scheduleDate" class="col-sm-3 col-form-label">Interval</label>
+							<div class="col-sm-9">
+								<select id="repeatInterval" name="repeatInterval" class="form-control">
+									<option>Weekly</option>
+									<option>Daily (Weekday)</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="scheduleDate" class="col-sm-3 col-form-label">Day of Week</label>
+							<div class="col-sm-9 pt-2">
+								<span class="mr-2"><input type="checkbox" /> S</span>
+								<span class="mr-2"><input type="checkbox" /> M</span>
+								<span class="mr-2"><input type="checkbox" /> T</span>
+								<span class="mr-2"><input type="checkbox" /> W</span>
+								<span class="mr-2"><input type="checkbox" /> T</span>
+								<span class="mr-2"><input type="checkbox" /> F</span>
+								<span class="mr-2"><input type="checkbox" /> S</span>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="scheduleDate" class="col-sm-3 col-form-label">Series Start</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="scheduleDate" value="1/1/2020">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="scheduleDate" class="col-sm-3 col-form-label">Series End</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="scheduleDate" value="12/31/2020">
+							</div>
+						</div>
+
+						<hr />
+
+						<div class="form-group row">
+							<label for="facilityName" class="col-sm-3 col-form-label">Facility</label>
+							<div class="col-sm-9">
+								<select class="form-control">
+									<option>City Hospital</option>
+									<option>State Hospital</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="startTime" class="col-sm-3 col-form-label">Start Time</label>
+							<div class="col-sm-9">
+								<select id="startTime" name="startTime" class="form-control">
+									<option>6 am</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="endTime" class="col-sm-3 col-form-label">End Time</label>
+							<div class="col-sm-9">
+								<select id="endTime" name="endTime" class="form-control">
+									<option>12 pm</option>
+								</select>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 
 </html>
