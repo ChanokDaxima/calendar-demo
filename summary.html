@@ -139,6 +139,10 @@
 							$('#providerSchedModal').modal('show');
 						}
 						
+					},
+
+					resourceRender: function (renderInfo) {
+           renderInfo.el.addEventListener("click", function(){ console.log('clicked:' + renderInfo.resource.id); });
 					}
         });
 
@@ -202,13 +206,13 @@
 							<div class="form-group row">
 								<label for="providerName" class="col-sm-3 col-form-label">Provider</label>
 								<div class="col-sm-9">
-									<input type="text" readonly class="form-control-plaintext" id="providerName" value="Test Provider">
+									<input type="text" readonly class="form-control-plaintext" id="providerName" value="Dr. Adams">
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="facilityName" class="col-sm-3 col-form-label">Facility</label>
 								<div class="col-sm-9">
-									<input type="text" readonly class="form-control-plaintext" id="facilityName" value="Hospital 1">
+									<input type="text" readonly class="form-control-plaintext" id="facilityName" value="City Hospital">
 								</div>
 							</div>
 							<div class="form-group row">
