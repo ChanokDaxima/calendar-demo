@@ -68,7 +68,16 @@
 				],
 				eventClick: function (info) {
 					//console.log('info=' + info.event.start);
-
+					if (info.event.title == 'Open') {
+						$('#step_provider').removeClass('d-none');
+						$('#step_event').addClass('d-none');
+						$('#btnAppointmentModalSave').addClass('d-none');
+					} else {
+						$('#step_provider').addClass('d-none');
+						$('#step_event').removeClass('d-none');
+						$('#btnAppointmentModalSave').removeClass('d-none');
+					}
+					
 					$('#appointmentModal').modal('show');
 				},
 				eventRender: function (info) {
@@ -278,7 +287,7 @@
 								<label for="endTime" class="col-sm-3 col-form-label"></label>
 								<div class="col-sm-9">
 									<small id="timezoneHelp" class="form-text text-muted">
-										All times are in PST
+										All times are in Pacific Time
 									</small>
 								</div>
 							</div>
@@ -388,7 +397,7 @@
 							<label for="endTime" class="col-sm-3 col-form-label"></label>
 							<div class="col-sm-9">
 								<small id="timezoneHelp" class="form-text text-muted">
-									All times are in PST
+									All times are in Pacific Time
 								</small>
 							</div>
 						</div>
