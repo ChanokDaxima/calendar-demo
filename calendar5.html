@@ -44,23 +44,24 @@
 				defaultView: 'dayGridMonth',
 				showNonCurrentDates: false,
 				defaultDate: '2020-01-24',
+				displayEventEnd: true,
 				events: [
 					{ title: 'John Smith', start: '2020-01-01 06:00:00', end: '2020-01-01 12:00:00', color: '#3788d8' },
 					{ title: 'Peter Cole', start: '2020-01-01 12:00:00', end: '2020-01-01 18:00:00', color: '#3788d8' },
-					{ title: 'John Smith', start: '2020-01-02 06:00:00', end: '2020-01-01 12:00:00', color: '#3788d8' },
-					{ title: 'Peter Cole', start: '2020-01-02 12:00:00', end: '2020-01-01 18:00:00', color: '#3788d8' },
-					{ title: 'Frank Adams', start: '2020-01-03 06:00:00', end: '2020-01-01 12:00:00', color: '#3788d8' },
-					{ title: 'Henry Morgan', start: '2020-01-03 12:00:00', end: '2020-01-01 18:00:00', color: '#3788d8' },
-					{ title: 'John Smith', start: '2020-01-06 06:00:00', end: '2020-01-01 12:00:00', color: '#3788d8' },
-					{ title: 'Peter Cole', start: '2020-01-06 12:00:00', end: '2020-01-01 18:00:00', color: '#3788d8' },
-					{ title: 'Dan Witten', start: '2020-01-07 06:00:00', end: '2020-01-01 12:00:00', color: '#3788d8' },
-					{ title: 'Henry Morgan', start: '2020-01-07 12:00:00', end: '2020-01-01 18:00:00', color: '#3788d8' },
-					{ title: 'John Smith', start: '2020-01-08 06:00:00', end: '2020-01-01 12:00:00', color: '#3788d8' },
-					{ title: 'Peter Cole', start: '2020-01-08 12:00:00', end: '2020-01-01 18:00:00', color: '#3788d8' },
+					{ title: 'John Smith', start: '2020-01-02 06:00:00', end: '2020-01-02 12:00:00', color: '#3788d8' },
+					{ title: 'Peter Cole', start: '2020-01-02 12:00:00', end: '2020-01-02 18:00:00', color: '#3788d8' },
+					{ title: 'Frank Adams', start: '2020-01-03 06:00:00', end: '2020-01-03 12:00:00', color: '#3788d8' },
+					{ title: 'Henry Morgan', start: '2020-01-03 12:00:00', end: '2020-01-03 18:00:00', color: '#3788d8' },
+					{ title: 'John Smith', start: '2020-01-06 06:00:00', end: '2020-01-06 12:00:00', color: '#3788d8' },
+					{ title: 'Peter Cole', start: '2020-01-06 12:00:00', end: '2020-01-06 18:00:00', color: '#3788d8' },
+					{ title: 'Dan Witten', start: '2020-01-07 06:00:00', end: '2020-01-07 12:00:00', color: '#3788d8' },
+					{ title: 'Henry Morgan', start: '2020-01-07 12:00:00', end: '2020-01-07 18:00:00', color: '#3788d8' },
+					{ title: 'John Smith', start: '2020-01-08 06:00:00', end: '2020-01-08 12:00:00', color: '#3788d8' },
+					{ title: 'Peter Cole', start: '2020-01-08 12:00:00', end: '2020-01-08 18:00:00', color: '#3788d8' },
 					{
 						daysOfWeek: ['1', '2', '3', '4', '5'],
 						title: 'Open',
-						startTime: '6:00:00',
+						startTime: '06:00:00',
 						endTime: '18:00:00',
 						color: '#D3D3D3'
 					},
@@ -200,13 +201,13 @@
 						<div class="form-group row">
 							<label for="scheduleDate" class="col-sm-3 col-form-label">Series Start</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="scheduleDate" value="1/1/2020">
+								<input type="text" class="form-control" value="1/1/2020">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="scheduleDate" class="col-sm-3 col-form-label">Series End</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="scheduleDate" value="12/31/2020">
+								<input type="text" class="form-control" value="12/31/2020">
 							</div>
 						</div>
 
@@ -253,7 +254,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Creat Open Work Schedule</h5>
+					<h5 class="modal-title">Creat Open Work Schedule</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -263,12 +264,12 @@
 						<div class="form-group row">
 							<label for="scheduleName" class="col-sm-3 col-form-label">Repeat Event</label>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" value="option1"
 									checked>
 								<label class="form-check-label" for="inlineRadio1">Yes</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+								<input class="form-check-input" type="radio" name="inlineRadioOptions"
 									value="option2">
 								<label class="form-check-label" for="inlineRadio2">No</label>
 							</div>
@@ -277,7 +278,7 @@
 						<div class="form-group row">
 							<label for="scheduleDate" class="col-sm-3 col-form-label">Interval</label>
 							<div class="col-sm-9">
-								<select id="repeatInterval" name="repeatInterval" class="form-control">
+								<select name="repeatInterval" class="form-control">
 									<option>Weekly</option>
 									<option>Daily (Weekday)</option>
 								</select>
@@ -300,13 +301,13 @@
 						<div class="form-group row">
 							<label for="scheduleDate" class="col-sm-3 col-form-label">Series Start</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="scheduleDate" value="1/1/2020">
+								<input type="text" class="form-control" value="1/1/2020">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="scheduleDate" class="col-sm-3 col-form-label">Series End</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" id="scheduleDate" value="12/31/2020">
+								<input type="text" class="form-control" value="12/31/2020">
 							</div>
 						</div>
 
@@ -325,7 +326,7 @@
 						<div class="form-group row">
 							<label for="startTime" class="col-sm-3 col-form-label">Start Time</label>
 							<div class="col-sm-9">
-								<select id="startTime" name="startTime" class="form-control">
+								<select name="startTime" class="form-control">
 									<option>6 am</option>
 								</select>
 							</div>
@@ -333,7 +334,7 @@
 						<div class="form-group row">
 							<label for="endTime" class="col-sm-3 col-form-label">End Time</label>
 							<div class="col-sm-9">
-								<select id="endTime" name="endTime" class="form-control">
+								<select name="endTime" class="form-control">
 									<option>12 pm</option>
 								</select>
 							</div>
