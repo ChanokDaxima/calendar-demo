@@ -98,7 +98,16 @@
 		}
 
 		function addAppointment() {
+			$('#step_provider').removeClass('d-none');
+			$('#step_event').addClass('d-none');
+			$('#btnAppointmentModalSave').addClass('d-none');
 			$('#appointmentModal').modal('show');
+		}
+
+		function selectApptProvider() {
+			$('#step_provider').addClass('d-none');
+			$('#step_event').removeClass('d-none');
+			$('#btnAppointmentModalSave').removeClass('d-none');
 		}
 
 	</script>
@@ -160,90 +169,121 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form>
-						<div class="form-group row">
-							<label for="scheduleName" class="col-sm-3 col-form-label">Repeat Event</label>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"
-									checked>
-								<label class="form-check-label" for="inlineRadio1">Yes</label>
+					<div id="step_provider">
+						<form>
+							<div class="form-group">
+								<div class="input-group mb-3">
+									<input type="text" class="form-control" placeholder="Provider Name" aria-label="Provider Name"
+										aria-describedby="button-addon2">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+									</div>
+								</div>
 							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-									value="option2">
-								<label class="form-check-label" for="inlineRadio2">No</label>
+							<div class="form-group">
+								<table class="table">
+									<tbody>
+										<tr>
+											<td><a href="#" onClick="selectApptProvider()">Dr. Adams</a></td>
+										</tr>
+										<tr>
+											<td><a href="#" onClick="selectApptProvider()">Dr. Cole</a></td>
+										</tr>
+										<tr>
+											<td><a href="#" onClick="selectApptProvider()">Dr. Morgan</a></td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="scheduleDate" class="col-sm-3 col-form-label">Interval</label>
-							<div class="col-sm-9">
-								<select id="repeatInterval" name="repeatInterval" class="form-control">
-									<option>Weekly</option>
-									<option>Daily (Weekday)</option>
-								</select>
+						</form>
+					</div>
+					<div id="step_event" class="d-none">
+						<form>
+							<div class="form-group row">
+								<label for="scheduleName" class="col-sm-3 col-form-label">Repeat Event</label>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"
+										checked>
+									<label class="form-check-label" for="inlineRadio1">Yes</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+										value="option2">
+									<label class="form-check-label" for="inlineRadio2">No</label>
+								</div>
 							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="scheduleDate" class="col-sm-3 col-form-label">Day of Week</label>
-							<div class="col-sm-9 pt-2">
-								<span class="mr-2"><input type="checkbox" /> S</span>
-								<span class="mr-2"><input type="checkbox" /> M</span>
-								<span class="mr-2"><input type="checkbox" /> T</span>
-								<span class="mr-2"><input type="checkbox" /> W</span>
-								<span class="mr-2"><input type="checkbox" /> T</span>
-								<span class="mr-2"><input type="checkbox" /> F</span>
-								<span class="mr-2"><input type="checkbox" /> S</span>
+	
+							<div class="form-group row">
+								<label for="scheduleDate" class="col-sm-3 col-form-label">Interval</label>
+								<div class="col-sm-9">
+									<select id="repeatInterval" name="repeatInterval" class="form-control">
+										<option>Weekly</option>
+										<option>Daily (Weekday)</option>
+									</select>
+								</div>
 							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="scheduleDate" class="col-sm-3 col-form-label">Series Start</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control" value="1/1/2020">
+	
+							<div class="form-group row">
+								<label for="scheduleDate" class="col-sm-3 col-form-label">Day of Week</label>
+								<div class="col-sm-9 pt-2">
+									<span class="mr-2"><input type="checkbox" /> S</span>
+									<span class="mr-2"><input type="checkbox" /> M</span>
+									<span class="mr-2"><input type="checkbox" /> T</span>
+									<span class="mr-2"><input type="checkbox" /> W</span>
+									<span class="mr-2"><input type="checkbox" /> T</span>
+									<span class="mr-2"><input type="checkbox" /> F</span>
+									<span class="mr-2"><input type="checkbox" /> S</span>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label for="scheduleDate" class="col-sm-3 col-form-label">Series End</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control" value="12/31/2020">
+	
+							<div class="form-group row">
+								<label for="scheduleDate" class="col-sm-3 col-form-label">Series Start</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" value="1/1/2020">
+								</div>
 							</div>
-						</div>
-
-						<hr />
-
-						<div class="form-group row">
-							<label for="facilityName" class="col-sm-3 col-form-label">Provider</label>
-							<div class="col-sm-9">
-								<select class="form-control">
-									<option>John Smith</option>
-									<option>Peter Cole</option>
-								</select>
+							<div class="form-group row">
+								<label for="scheduleDate" class="col-sm-3 col-form-label">Series End</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" value="12/31/2020">
+								</div>
 							</div>
-						</div>
-
-						<div class="form-group row">
-							<label for="startTime" class="col-sm-3 col-form-label">Start Time</label>
-							<div class="col-sm-9">
-								<select id="startTime" name="startTime" class="form-control">
-									<option>6 am</option>
-								</select>
+	
+							<hr />
+	
+							<div class="form-group row">
+								<label for="facilityName" class="col-sm-3 col-form-label">Provider</label>
+								<div class="col-sm-9">
+									<select class="form-control">
+										<option>John Smith</option>
+										<option>Peter Cole</option>
+									</select>
+								</div>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label for="endTime" class="col-sm-3 col-form-label">End Time</label>
-							<div class="col-sm-9">
-								<select id="endTime" name="endTime" class="form-control">
-									<option>12 pm</option>
-								</select>
+	
+							<div class="form-group row">
+								<label for="startTime" class="col-sm-3 col-form-label">Start Time</label>
+								<div class="col-sm-9">
+									<select id="startTime" name="startTime" class="form-control">
+										<option>6 am</option>
+									</select>
+								</div>
 							</div>
-						</div>
-					</form>
+							<div class="form-group row">
+								<label for="endTime" class="col-sm-3 col-form-label">End Time</label>
+								<div class="col-sm-9">
+									<select id="endTime" name="endTime" class="form-control">
+										<option>12 pm</option>
+									</select>
+								</div>
+							</div>
+						</form>
+					</div>
+					
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save</button>
+					<button type="button" class="btn btn-primary d-none" id="btnAppointmentModalSave">Save</button>
 				</div>
 			</div>
 		</div>
